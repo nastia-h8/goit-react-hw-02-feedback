@@ -1,21 +1,33 @@
+import { RawData, CountData, Item, Label } from './Statistics.styled';
+
 export function Statistics({ good, neutral, bad, total, positivePercentage }) {
   return (
-    <ul>
-      <li>
-        <p>Good: {good}</p>
-      </li>
-      <li>
-        <p>Neutral: {neutral}</p>
-      </li>
-      <li>
-        <p>Bad: {bad}</p>
-      </li>
-      <li>
-        <p>Total: {total}</p>
-      </li>
-      <li>
-        <p>Positive feedback: {`${positivePercentage}%`}</p>
-      </li>
-    </ul>
+    <>
+      <RawData>
+        <Item>
+          <Label>Good</Label>
+          <span>{good}</span>
+        </Item>
+        <Item>
+          <Label>Neutral</Label>
+          <span>{neutral}</span>
+        </Item>
+        <Item>
+          <Label>Bad</Label>
+          <span>{bad}</span>
+        </Item>
+      </RawData>
+
+      <CountData>
+        <li>
+          <Label>Total feedback: </Label>
+          <span>{total}</span>
+        </li>
+        <li>
+          <Label>Positive feedback: </Label>
+          <span>{`${positivePercentage}%`}</span>
+        </li>
+      </CountData>
+    </>
   );
 }

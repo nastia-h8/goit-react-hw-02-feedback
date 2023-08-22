@@ -1,13 +1,15 @@
+import { List, Button } from './FeedbackOptions.styled';
+
 export function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
-    <ul>
+    <List>
       {options.map(option => (
         <li key={option}>
-          <button type="button" onClick={() => onLeaveFeedback(option)}>
+          <Button type="button" onClick={() => onLeaveFeedback(option)}>
             {option}
-          </button>
+          </Button>
         </li>
       ))}
-    </ul>
+    </List>
   );
 }

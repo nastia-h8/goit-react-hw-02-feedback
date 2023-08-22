@@ -1,8 +1,12 @@
 import { Component } from 'react';
+
 import { Statistics } from 'components/Statistics/Statistics';
 import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { Section } from 'components/Section/Section';
 import { Notification } from 'components/Notification/Notification';
+
+import { Layout } from 'components/Layout';
+import { GlobalStyle } from 'components/GlobalStyle';
 
 export class App extends Component {
   state = { good: 0, neutral: 0, bad: 0 };
@@ -29,7 +33,7 @@ export class App extends Component {
     );
 
     return (
-      <>
+      <Layout>
         <Section title="Please leave feedback">
           <FeedbackOptions
             options={options}
@@ -37,8 +41,8 @@ export class App extends Component {
           />
         </Section>
 
-        {total > 0 ? (
-          <Section title="Statistics">
+        <Section title="Statistics">
+          {total > 0 ? (
             <Statistics
               good={good}
               neutral={neutral}
@@ -46,11 +50,13 @@ export class App extends Component {
               total={total}
               positivePercentage={positivePercentage}
             />
-          </Section>
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
-      </>
+          ) : (
+            <Notification message="There is no feedback yet" />
+          )}
+        </Section>
+
+        <GlobalStyle />
+      </Layout>
     );
   }
 }
